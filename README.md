@@ -60,23 +60,7 @@ MSCS-634-Project-/
 │   ├── screenshots/
 │   └── README.md
 ├── requirements.txt
-└── README.md (this file - comprehensive project summary)
-```
-│   └── deliverable2_regression_modeling.ipynb
-├── screenshots/
-│   ├── data_value_distribution.png
-│   ├── demographic_patterns.png
-│   ├── obesity_trends_over_time.png
-│   ├── question_types_distribution.png
-│   ├── state_obesity_rates.png
-│   ├── feature_correlations.png
-│   ├── r2_comparison.png
-│   ├── rmse_comparison.png
-│   ├── predicted_vs_actual.png
-│   ├── residual_analysis.png
-│   └── coefficient_comparison.png
-├── requirements.txt
-└── README.md
+└── README.md 
 ```
 
 ## Deliverable 1: Data Collection, Cleaning, and Exploration
@@ -110,6 +94,32 @@ The original dataset had 106,260 records. After cleaning:
 The primary challenge involved handling missing data. Many demographic columns contained missing values because survey questions were not administered uniformly across all respondents. The approach taken was to retain rows where optional demographic information was missing while removing rows where essential fields like location or obesity values were absent. This preserved the maximum amount of usable data while maintaining data quality.
 
 Another consideration was validating that all percentage values fell within the valid range of 0 to 100, ensuring data integrity.
+
+### Key Visualizations
+
+Five visualizations were generated for exploratory analysis (all saved in `deliverable1/screenshots/` folder):
+
+1. **State Obesity Rates** (`state_obesity_rates.png`): Shows geographic variation with West Virginia highest at 35.5% and DC lowest at 27.9%.
+
+   ![State Obesity Rates](deliverable1/screenshots/state_obesity_rates.png)
+
+2. **Obesity Trends Over Time** (`obesity_trends_over_time.png`): Displays steady increase from 31% in 2011 to 34% in 2023.
+
+   ![Obesity Trends Over Time](deliverable1/screenshots/obesity_trends_over_time.png)
+
+3. **Demographic Patterns** (`demographic_patterns.png`): Illustrates relationships between education, income, age, and obesity rates.
+
+   ![Demographic Patterns](deliverable1/screenshots/demographic_patterns.png)
+
+4. **Question Types Distribution** (`question_types_distribution.png`): Shows the variety of health questions in the dataset.
+
+   ![Question Types Distribution](deliverable1/screenshots/question_types_distribution.png)
+
+5. **Data Value Distribution** (`data_value_distribution.png`): Displays the overall distribution of obesity percentages.
+
+   ![Data Value Distribution](deliverable1/screenshots/data_value_distribution.png)
+
+For detailed analysis, see [deliverable1/README.md](deliverable1/README.md).
 
 ---
 
