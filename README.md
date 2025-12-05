@@ -199,31 +199,31 @@ Cross-validation results closely matched test set performance across all models.
 
 ### Visualizations Created
 
-Six visualizations were generated to analyze model performance (all saved in `screenshots/` folder):
+Six visualizations were generated to analyze model performance (all saved in `deliverable2/screenshots/` folder):
 
 1. **Feature Correlations** (`feature_correlations.png`): Shows which features correlate most strongly with obesity rates. Low and High Confidence Limits show the strongest positive correlations (>0.94), while demographic features show weaker relationships.
 
-   ![Feature Correlations](screenshots/feature_correlations.png)
+   ![Feature Correlations](deliverable2/screenshots/feature_correlations.png)
 
 2. **R² Comparison** (`r2_comparison.png`): Compares R-squared scores across training, testing, and cross-validation. All three models achieve nearly identical performance with R² values above 0.998.
 
-   ![R² Comparison](screenshots/r2_comparison.png)
+   ![R² Comparison](deliverable2/screenshots/r2_comparison.png)
 
 3. **RMSE Comparison** (`rmse_comparison.png`): Compares prediction errors across all models. Linear and Ridge show identical RMSE (~0.34), while Lasso is slightly higher (~0.36).
 
-   ![RMSE Comparison](screenshots/rmse_comparison.png)
+   ![RMSE Comparison](deliverable2/screenshots/rmse_comparison.png)
 
 4. **Predicted vs Actual** (`predicted_vs_actual.png`): Scatter plots showing prediction accuracy for each model. Points closely follow the diagonal line, indicating excellent predictions across all models.
 
-   ![Predicted vs Actual](screenshots/predicted_vs_actual.png)
+   ![Predicted vs Actual](deliverable2/screenshots/predicted_vs_actual.png)
 
 5. **Residual Analysis** (`residual_analysis.png`): Examines prediction errors to identify systematic biases. Residuals are centered around zero with normal distribution, confirming no systematic bias.
 
-   ![Residual Analysis](screenshots/residual_analysis.png)
+   ![Residual Analysis](deliverable2/screenshots/residual_analysis.png)
 
 6. **Coefficient Comparison** (`coefficient_comparison.png`): Compares feature weights across all three models. Lasso sets most coefficients to zero, retaining only confidence limit features.
 
-   ![Coefficient Comparison](screenshots/coefficient_comparison.png)
+   ![Coefficient Comparison](deliverable2/screenshots/coefficient_comparison.png)
 
 ### Limitations and Considerations
 
@@ -304,14 +304,35 @@ Education level showed the strongest association with obesity outcomes, followed
 
 ### Key Visualizations
 
-The deliverable 3 screenshots folder contains:
-- Obesity category distribution
-- Feature importance analysis
-- Model performance comparisons
-- Confusion matrices for all models
-- ROC curves
-- Clustering optimization and visualization
-- Association rule patterns
+Nine visualizations were generated for this deliverable (all saved in `deliverable3/screenshots/` folder):
+
+1. **Obesity Category Distribution** (`obesity_category_distribution.png`): Shows class imbalance with 71% High, 19% Medium, and 10% Low obesity samples.
+
+   ![Obesity Category Distribution](deliverable3/screenshots/obesity_category_distribution.png)
+
+2. **Feature Importance** (`dt_feature_importance.png`): Age group is the most important predictor, followed by sample size and state encoding.
+
+   ![Feature Importance](deliverable3/screenshots/dt_feature_importance.png)
+
+3. **Model Comparison** (`model_comparison.png`): Compares accuracy and F1-scores across all five classification models, with Decision Tree (Tuned) performing best.
+
+   ![Model Comparison](deliverable3/screenshots/model_comparison.png)
+
+4. **Confusion Matrices** (`confusion_matrices.png`): Shows prediction patterns for all models, revealing challenges with Medium and Low categories.
+
+   ![Confusion Matrices](deliverable3/screenshots/confusion_matrices.png)
+
+5. **K-Means Clustering** (`kmeans_clustering_pca.png`): Visualizes state clusters in 2D using PCA, showing clear separation between high and moderate obesity states.
+
+   ![K-Means Clustering](deliverable3/screenshots/kmeans_clustering_pca.png)
+
+6. **Cluster Characteristics** (`cluster_characteristics.png`): Compares average obesity rates across the four identified clusters.
+
+   ![Cluster Characteristics](deliverable3/screenshots/cluster_characteristics.png)
+
+7. **Association Rules** (`association_rules.png`): Visualizes the strongest patterns discovered, highlighting education-obesity relationships.
+
+   ![Association Rules](deliverable3/screenshots/association_rules.png)
 
 For detailed analysis, see [deliverable3/README.md](deliverable3/README.md).
 
