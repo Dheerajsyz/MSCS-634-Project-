@@ -5,14 +5,15 @@
 
 This project analyzes obesity and health data from the CDC to understand patterns in obesity rates across the United States and build predictive models. The dataset comes from the Behavioral Risk Factor Surveillance System (BRFSS), which is a nationwide health survey.
 
-The project has multiple phases:
+The project consists of four phases:
 - **Deliverable 1**: Data collection, cleaning, and exploratory analysis
 - **Deliverable 2**: Regression modeling and performance evaluation
-- **Future Deliverables**: Classification, clustering, and association rule mining
+- **Deliverable 3**: Classification, clustering, and association rule mining
+- **Deliverable 4**: Final insights, recommendations, and comprehensive report
 
 ## About the Dataset
 
-I'm using the "Nutrition, Physical Activity, and Obesity" dataset from the CDC's BRFSS program.
+The analysis uses the "Nutrition, Physical Activity, and Obesity" dataset from the CDC's BRFSS program.
 
 - **Size**: 106,261 records with 33 attributes
 - **Time period**: 2011 to 2023 (13 years of data)
@@ -46,8 +47,21 @@ MSCS-634-Project-/
 ├── data/
 │   ├── Nutrition__Physical_Activity__and_Obesity_-_Behavioral_Risk_Factor_Surveillance_System.csv
 │   └── obesity_data_cleaned.csv
-├── notebooks/
+├── deliverable1/
 │   ├── deliverable1_obesity_analysis.ipynb
+│   ├── screenshots/
+│   └── README.md
+├── deliverable2/
+│   ├── deliverable2_regression_modeling.ipynb
+│   ├── screenshots/
+│   └── README.md
+├── deliverable3/
+│   ├── deliverable3_classification_clustering.ipynb
+│   ├── screenshots/
+│   └── README.md
+├── requirements.txt
+└── README.md (this file - comprehensive project summary)
+```
 │   └── deliverable2_regression_modeling.ipynb
 ├── screenshots/
 │   ├── data_value_distribution.png
@@ -249,6 +263,59 @@ Additional factors not captured in this dataset that likely influence obesity ra
 
 ---
 
+## Deliverable 3: Classification, Clustering, and Pattern Mining
+
+### Overview
+
+The third deliverable applied machine learning techniques to categorize obesity levels, identify state groupings, and discover patterns in the data. Four classification models, K-Means clustering, and association rule mining provided complementary insights into obesity patterns.
+
+### Classification Models
+
+Four models were developed to predict obesity categories (Low: <25%, Medium: 25-30%, High: >30%):
+
+- **Decision Tree (Tuned)**: Best performer with 73.7% test accuracy after hyperparameter optimization
+- **Decision Tree (Baseline)**: 72.5% test accuracy before tuning
+- **SVM**: 71.4% test accuracy on a 10,000-sample subset
+- **k-NN**: 69.9% test accuracy with k=5 neighbors
+- **Naive Bayes**: 60.0% test accuracy
+
+Age group emerged as the most important predictor, followed by sample size and state location. Class imbalance (71% High obesity samples) affected all models, particularly for Medium and Low categories.
+
+### Clustering Analysis
+
+K-Means clustering with k=4 grouped states based on obesity patterns:
+
+- **Cluster 0** (40 states): Moderate obesity rates (32.3% average)
+- **Cluster 1** (13 states): High obesity rates (34.2% average), predominantly Southern states
+- **Cluster 2** (1 state): Virgin Islands with unique characteristics
+- **Cluster 3** (1 state): National aggregate data
+
+The silhouette score of 0.35 indicated moderate cluster separation. Geographic patterns were clear, with high-obesity states concentrated in the South.
+
+### Association Rule Mining
+
+The Apriori algorithm identified patterns between demographic factors and obesity:
+
+- **Low Education → High Obesity** (Lift: 1.19, Confidence: 84.8%)
+- **Old Age → High Obesity** (Lift: 1.12, Confidence: 79.4%)
+- **Recent Year → High Obesity** (Lift: 1.10, Confidence: 78.0%)
+
+Education level showed the strongest association with obesity outcomes, followed by age group. The findings support targeted health education programs for at-risk populations.
+
+### Key Visualizations
+
+The deliverable 3 screenshots folder contains:
+- Obesity category distribution
+- Feature importance analysis
+- Model performance comparisons
+- Confusion matrices for all models
+- ROC curves
+- Clustering optimization and visualization
+- Association rule patterns
+
+For detailed analysis, see [deliverable3/README.md](deliverable3/README.md).
+
+---
 
 ## How to Run the Analysis
 
@@ -261,17 +328,14 @@ To run this analysis:
    pip install -r requirements.txt
    ```
 
-3. Run Deliverable 1 notebook:
+3. Run the notebooks in order:
    ```bash
-   jupyter notebook notebooks/deliverable1_obesity_analysis.ipynb
+   jupyter notebook deliverable1/deliverable1_obesity_analysis.ipynb
+   jupyter notebook deliverable2/deliverable2_regression_modeling.ipynb
+   jupyter notebook deliverable3/deliverable3_classification_clustering.ipynb
    ```
 
-4. Run Deliverable 2 notebook:
-   ```bash
-   jupyter notebook notebooks/deliverable2_regression_modeling.ipynb
-   ```
-
-5. Execute all cells sequentially from top to bottom
+4. Execute all cells sequentially from top to bottom
 
 ## Required Packages
 
@@ -282,8 +346,123 @@ All necessary packages are listed in `requirements.txt`:
 - matplotlib: Visualization creation
 - seaborn: Statistical visualization
 - scikit-learn: Machine learning algorithms and metrics
+- mlxtend: Association rule mining (Apriori algorithm)
 
 Install all dependencies with:
 ```bash
 pip install -r requirements.txt
 ```
+
+---
+
+## Project Summary and Key Findings
+
+### Dataset Characteristics
+
+The CDC BRFSS obesity dataset provided comprehensive coverage of obesity patterns across the United States from 2011-2023. After cleaning, 93,505 records remained from an original 106,261, representing all 50 states plus territories. The dataset included demographic stratifications (income, education, age, sex, race/ethnicity) and geographic information, making it suitable for diverse analytical approaches.
+
+### Major Findings Across All Deliverables
+
+**Geographic Disparities**: Obesity rates vary significantly by state, ranging from 27.9% (DC) to 35.5% (West Virginia). Southern states consistently show higher rates, forming a distinct cluster in both exploratory and clustering analyses.
+
+**Temporal Trends**: Obesity rates increased steadily from approximately 31% in 2011 to 34% in 2023, representing a concerning upward trend that warrants intervention.
+
+**Demographic Patterns**: Education level emerged as the strongest predictor of obesity across multiple analyses (correlation, classification, association rules). Age, income, and education consistently showed meaningful relationships with obesity outcomes.
+
+**Predictive Modeling**: Regression models achieved exceptional accuracy (R² > 0.99) though primarily driven by confidence interval features. Classification models achieved 73.7% accuracy using demographic and geographic features alone, demonstrating practical predictive utility.
+
+**State Groupings**: Clustering identified natural groupings of states with similar obesity profiles, suggesting that targeted regional interventions may be more effective than national one-size-fits-all approaches.
+
+**Actionable Patterns**: Association rule mining confirmed that low education combined with older age strongly predicts high obesity (Lift: 1.19), supporting targeted health education programs for at-risk populations.
+
+### Practical Recommendations
+
+**For Public Health Officials**:
+- Prioritize resources toward Cluster 1 states (Southern region) with consistently high obesity rates
+- Develop age-specific interventions, as age group is the strongest classifier
+- Invest in health education programs, particularly for populations with lower educational attainment
+- Monitor temporal trends closely, as recent years show accelerating obesity rates
+
+**For Policymakers**:
+- Address socioeconomic factors (income, education, access) that drive obesity disparities
+- Support data collection efforts to maintain high-quality surveillance systems
+- Enable state-to-state collaboration within identified clusters to share successful strategies
+- Consider regional approaches that account for geographic and cultural differences
+
+**For Healthcare Providers**:
+- Use classification models to identify high-risk patients for preventive interventions
+- Focus on lifecycle approaches, targeting different age groups with tailored strategies
+- Address obesity before it becomes entrenched, particularly in younger populations
+- Consider socioeconomic context when developing treatment plans
+
+**For Researchers**:
+- Expand datasets to include food environment, built environment, and healthcare access variables
+- Develop causal models that go beyond correlation to identify intervention targets
+- Conduct longitudinal studies tracking individuals over time
+- Test interventions using randomized controlled trials in high-risk clusters
+
+### Ethical Considerations
+
+**Data Privacy**: The dataset contains aggregated state-level statistics rather than individual records, minimizing privacy concerns. However, demographic stratifications could potentially identify small subpopulations in less populated states or territories.
+
+**Fairness and Bias**: The analysis revealed significant disparities by race, income, and education level. While these findings are important for targeting interventions, care must be taken not to stigmatize particular demographic groups. Obesity is influenced by complex socioeconomic and environmental factors beyond individual control.
+
+**Representation**: Not all demographic groups are equally represented in the survey data. Missing demographic information was more common for certain categories, potentially introducing selection bias. The analysis acknowledged this limitation by using indicator values rather than discarding incomplete records.
+
+**Model Deployment**: If classification models were deployed to identify high-risk individuals, safeguards would be needed to ensure:
+- Models do not reinforce existing disparities
+- Predictions are used to provide additional support, not to deny services
+- Regular auditing for fairness across demographic groups
+- Transparency about model limitations and uncertainty
+
+**Interpretation**: The strong association between low education and high obesity should not be interpreted as blaming individuals. Education level is a marker for broader socioeconomic disadvantage including limited access to healthy foods, safe spaces for physical activity, and healthcare services.
+
+**Intervention Ethics**: Any interventions based on these findings should:
+- Respect individual autonomy and cultural differences
+- Address structural barriers rather than focusing solely on individual behavior
+- Ensure equitable access to resources across all communities
+- Avoid paternalistic approaches that impose solutions without community input
+
+### Limitations
+
+**Data Leakage**: Regression models achieved artificially high accuracy due to including confidence interval features mathematically derived from the target variable.
+
+**Class Imbalance**: Classification models struggled with Medium and Low obesity categories due to their underrepresentation (19% and 10% respectively).
+
+**Temporal Generalization**: Models were trained on 2011-2023 data and may not generalize well to future years if obesity trends change.
+
+**Missing Context**: The dataset lacks important variables like food environment, built environment, healthcare access, and local policies that influence obesity rates.
+
+**Cross-Sectional Nature**: Most analyses used aggregated data, limiting ability to draw causal conclusions or track individual trajectories over time.
+
+### Future Directions
+
+**Enhanced Feature Engineering**: Incorporate external data sources including food environment indicators, walkability scores, healthcare access metrics, and local policy variables.
+
+**Advanced Modeling**: Test ensemble methods (Random Forest, Gradient Boosting), deep learning approaches, and hierarchical models that account for data structure.
+
+**Temporal Analysis**: Develop time-series forecasting models to predict future obesity trends and evaluate intervention impacts.
+
+**Causal Inference**: Apply causal modeling techniques to identify modifiable factors that truly drive obesity rather than mere correlations.
+
+**Intervention Testing**: Partner with public health departments to implement and evaluate interventions suggested by the analysis.
+
+**Expanded Scope**: Extend analysis to related health outcomes (diabetes, cardiovascular disease) to understand broader health patterns.
+
+### Conclusion
+
+This comprehensive analysis of CDC BRFSS obesity data demonstrates the power of data mining techniques to uncover actionable insights for public health. Across four deliverables spanning exploratory analysis, regression modeling, classification, clustering, and pattern mining, consistent findings emerged:
+
+Obesity is a complex phenomenon influenced by demographic, geographic, socioeconomic, and temporal factors. Education level consistently emerged as a key predictor, suggesting that knowledge and resources matter significantly. Geographic clustering revealed regional disparities requiring targeted interventions. Temporal trends showed concerning increases over the study period.
+
+The analytical techniques applied successfully identified at-risk populations (classification), grouped similar states (clustering), and discovered meaningful patterns (association rules) that can guide evidence-based interventions. While limitations exist, particularly regarding data leakage and missing contextual variables, the findings provide a solid foundation for public health planning.
+
+Addressing the obesity epidemic requires multi-faceted approaches that tackle structural barriers while respecting individual autonomy and cultural differences. This analysis provides data-driven guidance on where to focus resources, which populations need support, and what factors to address. Combined with ethical considerations around fairness and implementation, these insights can inform more effective, equitable obesity prevention and treatment strategies.
+
+---
+
+## Contact
+
+**Dheeraj Kollapaneni**  
+MSCS 634 - Advanced Data Mining  
+December 2025
