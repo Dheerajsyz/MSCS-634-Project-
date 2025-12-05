@@ -461,8 +461,3 @@ Addressing the obesity epidemic requires multi-faceted approaches that tackle st
 
 ---
 
-## Contact
-
-**Dheeraj Kollapaneni**  
-MSCS 634 - Advanced Data Mining  
-December 2025
